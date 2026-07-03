@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saisonnalisation — Branly DJIME</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --page-bg: #141210;
+  --cream: #EDEAE4; --cream2: #E2DED7; --white: #FAFAF8;
+  --orange: #E05A1C; --text: #1A1816; --text2: #6B6560; --text3: #9C9690;
+  --border: rgba(26,24,22,0.09); --border2: rgba(26,24,22,0.16);
+  /* ── CHANGER SELON LA SPÉ : analyst=#1B5FA8 / engineer=#1A7040 / scientist=#5C3DAB ── */
+  --accent: #1B5FA8;
+  --accent-light: #ddeaf7;
+}
+body { background: var(--page-bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+.page-col { max-width: 900px; margin: 0 auto; background: var(--cream); min-height: 100vh; border-left: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06); }
+
+/* NAV */
+nav { background: var(--white); border-bottom: 0.5px solid var(--border2); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 52px; padding: 0 44px; }
+.nav-back { font-size: 13px; color: var(--text2); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+.nav-back:hover { color: var(--text); }
+.nav-back svg { width: 14px; height: 14px; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--text3); }
+
+/* HEADER */
+.proj-header { background: var(--white); border-bottom: 0.5px solid var(--border2); padding: 48px 44px 40px; }
+.proj-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; background: var(--accent-light); color: var(--accent); margin-bottom: 16px; }
+.proj-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 1.1; letter-spacing: -1px; margin-bottom: 10px; }
+.proj-ctx { font-size: 12px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+.proj-summary { font-size: 14px; color: var(--text2); max-width: 620px; line-height: 1.65; margin-bottom: 28px; }
+.proj-metrics { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 20px; border-top: 0.5px solid var(--border); }
+.metric-n { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--orange); line-height: 1; }
+.metric-l { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+/* CONTENT */
+.proj-content { padding: 44px 44px 72px; }
+
+/* DEMO */
+.proj-demo { margin-bottom: 44px; }
+.block-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
+.demo-media { width: 100%; border-radius: 12px; overflow: hidden; border: 0.5px solid var(--border2); background: var(--cream2); min-height: 300px; display: flex; align-items: center; justify-content: center; cursor: zoom-in; }
+.demo-media img, .demo-media video { width: 100%; display: block; border-radius: 12px; }
+.demo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 48px; }
+.demo-placeholder svg { width: 32px; height: 32px; opacity: 0.18; }
+.demo-placeholder p { font-size: 11px; color: var(--text3); text-align: center; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
+
+/* DESCRIPTION */
+.proj-desc-section { margin-bottom: 36px; }
+.proj-desc-text { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.proj-desc-text p { margin-bottom: 12px; }
+.proj-desc-text p:last-child { margin-bottom: 0; }
+
+/* GALLERY */
+.proj-gallery { margin-bottom: 36px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.gallery-item {
+  border-radius: 8px; overflow: hidden;
+  border: 0.5px solid var(--border2); background: var(--cream2);
+  aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+  cursor: zoom-in; transition: opacity 0.15s;
+}
+.gallery-item:hover { opacity: 0.88; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.gallery-placeholder { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px; pointer-events: none; }
+.gallery-placeholder svg { width: 18px; height: 18px; opacity: 0.18; }
+.gallery-placeholder span { font-size: 9px; color: var(--text3); font-family: 'JetBrains Mono', monospace; text-align: center; word-break: break-all; }
+
+/* TOOLS */
+.proj-tools-section { margin-bottom: 36px; }
+.tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-tag { font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text2); background: var(--white); border: 0.5px solid var(--border2); padding: 5px 12px; border-radius: 6px; }
+
+/* NAV BOTTOM */
+.proj-nav-bottom { display: flex; justify-content: space-between; padding-top: 28px; border-top: 0.5px solid var(--border2); }
+.nav-btn { font-size: 13px; color: var(--text2); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 7px 14px; border: 0.5px solid var(--border2); border-radius: 99px; transition: all 0.15s; }
+.nav-btn:hover { color: var(--text); border-color: var(--text2); }
+.nav-btn svg { width: 13px; height: 13px; }
+
+/* FOOTER */
+footer { background: var(--text); padding: 22px 44px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-name { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--cream); }
+.footer-info { font-size: 12px; color: #6B6560; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.92);
+  align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw; max-height: 92vh;
+  border-radius: 6px; object-fit: contain;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  cursor: default;
+}
+.lightbox-close {
+  position: fixed; top: 20px; right: 24px;
+  color: rgba(255,255,255,0.7); font-size: 28px; cursor: pointer;
+  background: none; border: none; line-height: 1;
+  transition: color 0.15s;
+}
+.lightbox-close:hover { color: #fff; }
+</style>
+</head>
+<body>
+<div class="page-col">
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Retour au portfolio
+    </a>
+    <span class="nav-logo">Branly DJIME</span>
+  </div>
+</nav>
+
+<!-- ── HEADER — modifier titre, badge, contexte, résumé, métriques ── -->
+<header class="proj-header">
+  <div class="proj-badge">Data Analyst</div>
+  <div class="proj-title">Saisonnalisation<br>Migration SAP BI4 → Power BI</div>
+  <div class="proj-ctx">Air France Industries · DEA Data Office · 2024–2026</div>
+  <div class="proj-summary">
+    Migration d'un rapport critique de planification des tâches protocolaires de maintenance pré-été depuis SAP BI4 vers Power BI, avec automatisation complète des flux de données et des commentaires métier via Power Automate et Scripts Office.
+  </div>
+  <div class="proj-metrics">
+    <div><div class="metric-n">45 min</div><div class="metric-l">Avant migration</div></div>
+    <div><div class="metric-n">5 min</div><div class="metric-l">Après migration</div></div>
+    <div><div class="metric-n">9×</div><div class="metric-l">Gain de performance</div></div>
+  </div>
+</header>
+
+<div class="proj-content">
+
+  <!-- ── DÉMO — choisir une des 3 options ci-dessous ── -->
+  <div class="proj-demo">
+    <div class="block-label">Aperçu du rapport</div>
+    <div class="demo-media" data-lightbox>
+      <img src="../assets/images/projects/saisonnalisation/demo.gif" alt="Démo">
+      <!--
+        OPTION 1 — GIF animé (recommandé pour montrer l'interactivité) :
+        <img src="../assets/images/projects/saisonnalisation/demo.gif" alt="Démo">
+
+        OPTION 2 — Vidéo courte :
+        <video autoplay loop muted playsinline>
+          <source src="../assets/images/projects/saisonnalisation/demo.mp4" type="video/mp4">
+        </video>
+
+        OPTION 3 — Image principale :
+        <img src="../assets/images/projects/saisonnalisation/img-1.png" alt="Vue principale">
+      
+      <div class="demo-placeholder">
+        
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <p>Ajouter ici un GIF, vidéo ou screenshot principal :<br>assets/images/projects/saisonnalisation/demo.gif</p>
+      </div>
+      -->
+    </div>
+  </div>
+
+  <!-- ── DESCRIPTION — modifier le texte ── -->
+  <div class="proj-desc-section">
+    <div class="block-label">Contexte & Problématique</div>
+    <div class="proj-desc-text">
+      <p>Dans le cadre de la Direction Entretien Avion d'Air France Industries, le processus de Saisonnalisation désigne la planification des tâches protocolaires de maintenance à réaliser avant le pic d'activité estival. Ce rapport était historiquement produit depuis SAP BI4, nécessitant une mise à jour manuelle chronophage chaque semaine.</p>
+      <p>La mission consistait à migrer ce rapport vers Power BI tout en automatisant l'intégralité du processus, afin de libérer du temps aux équipes et garantir la fraîcheur des données en temps réel.</p>
+    </div>
+  </div>
+
+  <div class="proj-desc-section">
+    <div class="block-label">Solution développée</div>
+    <div class="proj-desc-text">
+      <p>Recueil des besoins avec les équipes métier, rédaction du cahier des charges et définition du MVP. Modélisation des données en schéma en étoile. Développement du rapport Power BI avec mesures DAX et navigation intuitive.</p>
+      <p>Automatisation des exports SAP/BI4, transformation Power Query, et déclenchement automatique des commentaires métier via Power Automate et Scripts Office. Documentation technique complète pour assurer la maintenabilité.</p>
+    </div>
+  </div>
+
+  <!-- ── GALERIE — ajouter les images dans assets/images/projects/saisonnalisation/ ── -->
+  <div class="proj-gallery">
+    <div class="block-label">Captures du rapport — cliquer pour agrandir</div>
+    <div class="gallery-grid">
+
+      <div class="gallery-item" data-lightbox>
+        <img src="../assets/images/projects/saisonnalisation/img-1.png" alt="Vue 1"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="gallery-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>projects/saisonnalisation/img-1.png</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-lightbox>
+        <img src="../assets/images/projects/saisonnalisation/img-2.png" alt="Vue 2"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="gallery-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>projects/saisonnalisation/img-2.png</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-lightbox>
+        <img src="../assets/images/projects/saisonnalisation/img-3.png" alt="Vue 3"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="gallery-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>projects/saisonnalisation/img-3.png</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-lightbox>
+        <img src="../assets/images/projects/saisonnalisation/img-4.png" alt="Vue 4"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="gallery-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>projects/saisonnalisation/img-4.png (optionnel)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── STACK — modifier selon le projet ── -->
+  <div class="proj-tools-section">
+    <div class="block-label">Stack technique</div>
+    <div class="tools-grid">
+      <span class="tool-tag">Power BI</span>
+      <span class="tool-tag">DAX</span>
+      <span class="tool-tag">Power Query</span>
+      <span class="tool-tag">Power Automate</span>
+      <span class="tool-tag">Script Office</span>
+      <span class="tool-tag">SAP/BI4</span>
+      <span class="tool-tag">SQL</span>
+    </div>
+  </div>
+
+  <!-- ── NAVIGATION BAS — adapter les liens ── -->
+  <div class="proj-nav-bottom">
+    <a class="nav-btn" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Tous les projets
+    </a>
+    <a class="nav-btn" href="empreinte-maintenance.html">
+      Projet suivant
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Branly DJIME</span>
+    <span class="footer-info">branly.djime@gmail.com · 2026</span>
+  </div>
+</footer>
+
+</div><!-- end page-col -->
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxImg.src = '';
+}
+
+// Trigger on gallery images and demo image
+document.querySelectorAll('[data-lightbox] img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (img.complete && img.naturalWidth > 0) {
+      openLightbox(img.src, img.alt);
+    }
+  });
+});
+
+// Close on overlay click
+lightbox.addEventListener('click', closeLightbox);
+
+// Close button
+lightboxClose.addEventListener('click', closeLightbox);
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>

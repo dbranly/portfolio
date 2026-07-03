@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Branly DJIME</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --page-bg: #141210;
+  --cream: #EDEAE4;
+  --cream2: #E2DED7;
+  --white: #FAFAF8;
+  --orange: #E05A1C;
+  --orange-hover: #C44E15;
+  --text: #1A1816;
+  --text2: #6B6560;
+  --text3: #9C9690;
+  --border: rgba(26,24,22,0.09);
+  --border2: rgba(26,24,22,0.16);
+  --analyst: #1B5FA8;
+  --analyst-light: #ddeaf7;
+  --engineer: #1A7040;
+  --engineer-light: #d4eee0;
+  --scientist: #5C3DAB;
+  --scientist-light: #ebe4f7;
+  --col: 900px;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── COLUMN WRAPPER ── */
+.page-col {
+  max-width: var(--col);
+  margin: 0 auto;
+  background: var(--cream);
+  min-height: 100vh;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.inner { padding: 0 44px; }
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 0.5px solid var(--border2);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; height: 54px;
+  padding: 0 44px;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--text); text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.nav-link { font-size: 13px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
+.nav-link:hover { color: var(--text); }
+.nav-cta { background: var(--orange); color: #fff; font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: 99px; text-decoration: none; transition: background 0.15s; }
+.nav-cta:hover { background: var(--orange-hover); }
+
+/* ── HERO ── */
+.hero { background: var(--white); padding: 60px 44px 52px; border-bottom: 0.5px solid var(--border2); display: flex; flex-direction: column;}
+.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 24px; }
+
+/* Ligne principale gérée en Flexbox pour coller la description au logo */
+.hero-main-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 44px; /* Ajuste cette valeur si tu veux serrer encore plus (ex: 32px) */
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+/* Encapsulation du logo et des sous-titres */
+.hero-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.hero-name { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 400; line-height: 1.0; letter-spacing: -2.5px; margin-bottom: 14px; }
+.hero-name em { font-style: italic; color: var(--orange); }
+.hero-tagline { font-size: 17px; color: var(--text2); margin-bottom: 0px; }
+
+/* Description resserrée et à largeur maîtrisée */
+.hero-desc { font-size: 14px; color: var(--text2); max-width: 490px; line-height: 1.65; margin-bottom: 0; }
+
+.hero-dims { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 36px; border: 0.5px solid var(--border2); border-radius: 10px; overflow: hidden; }
+.hero-dim { padding: 16px 20px; border-right: 0.5px solid var(--border2); }
+.hero-dim:last-child { border-right: none; }
+.dim-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.dim-label.analyst { color: var(--analyst); }
+.dim-label.engineer { color: var(--engineer); }
+.dim-label.scientist { color: var(--scientist); }
+.dim-text { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+.hero-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); line-height: 1; }
+.stat-l { font-size: 11px; color: var(--text3); margin-top: 3px; }
+.hero-links { display: flex; gap: 8px; }
+.hero-link { font-size: 12px; color: var(--text2); border: 0.5px solid var(--border2); padding: 6px 13px; border-radius: 99px; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: all 0.15s; }
+.hero-link:hover { border-color: var(--text2); color: var(--text); }
+.hero-link svg { width: 12px; height: 12px; }
+
+/* ── ESILV ── */
+.esilv-section { background: var(--white); border-bottom: 0.5px solid var(--border2); padding: 44px 44px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; margin-bottom: 5px; }
+.section-sub { font-size: 13px; color: var(--text2); margin-bottom: 24px; }
+.esilv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.esilv-card { border-radius: 10px; padding: 18px 20px; border: 0.5px solid; }
+.esilv-card.analyst { background: var(--analyst-light); border-color: rgba(27,95,168,0.2); }
+.esilv-card.engineer { background: var(--engineer-light); border-color: rgba(26,112,64,0.2); }
+.esilv-card.scientist { background: var(--scientist-light); border-color: rgba(92,61,171,0.2); }
+.esilv-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.esilv-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.esilv-icon.analyst { background: var(--analyst); }
+.esilv-icon.engineer { background: var(--engineer); }
+.esilv-icon.scientist { background: var(--scientist); }
+.esilv-icon svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
+.esilv-card-name { font-size: 13px; font-weight: 500; }
+.esilv-card-name.analyst { color: var(--analyst); }
+.esilv-card-name.engineer { color: var(--engineer); }
+.esilv-card-name.scientist { color: var(--scientist); }
+.esilv-modules { font-size: 12px; color: var(--text2); margin-bottom: 10px; line-height: 1.5; }
+.esilv-tools { display: flex; flex-wrap: wrap; gap: 4px; }
+.esilv-tool { font-size: 10px; font-family: 'JetBrains Mono', monospace; padding: 2px 7px; border-radius: 4px; }
+.esilv-tool.analyst { background: rgba(27,95,168,0.12); color: var(--analyst); }
+.esilv-tool.engineer { background: rgba(26,112,64,0.12); color: var(--engineer); }
+.esilv-tool.scientist { background: rgba(92,61,171,0.12); color: var(--scientist); }
+
+/* ── FILTERS ── */
+.filters-bar { padding: 24px 44px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn { font-size: 12px; font-weight: 500; padding: 6px 15px; border-radius: 99px; border: 0.5px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+.filter-btn:hover { background: var(--cream2); color: var(--text); }
+.filter-btn.f-all.active { background: var(--text); color: var(--white); border-color: var(--text); }
+.filter-btn.f-analyst.active { background: var(--analyst-light); color: var(--analyst); border-color: rgba(27,95,168,0.4); }
+.filter-btn.f-engineer.active { background: var(--engineer-light); color: var(--engineer); border-color: rgba(26,112,64,0.4); }
+.filter-btn.f-scientist.active { background: var(--scientist-light); color: var(--scientist); border-color: rgba(92,61,171,0.4); }
+
+/* ── PROJECTS ── */
+.projects-wrap { padding: 28px 44px 72px; }
+.proj-section { margin-bottom: 48px; }
+.proj-section-head { display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid var(--border2); padding-bottom: 10px; margin-bottom: 18px; }
+.proj-bar { display: inline-block; width: 3px; height: 18px; border-radius: 2px; flex-shrink: 0; }
+.bar-analyst { background: var(--analyst); }
+.bar-engineer { background: var(--engineer); }
+.bar-scientist { background: var(--scientist); }
+.proj-section-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; }
+.proj-section-sub { font-size: 12px; color: var(--text3); margin-left: auto; }
+
+/* ── CARDS GRID ── */
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white); border: 0.5px solid var(--border2);
+  border-radius: 10px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.card.hidden { display: none; }
+
+.card-accent { height: 3px; width: 100%; }
+.accent-analyst { background: var(--analyst); }
+.accent-engineer { background: var(--engineer); }
+.accent-scientist { background: var(--scientist); }
+
+.card-img {
+  width: 100%; height: 152px;
+  background: var(--cream2); position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.card-img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.card-img-placeholder svg { width: 24px; height: 24px; opacity: 0.2; }
+.card-img-placeholder span { font-size: 9px; color: var(--text3); font-family: 'JetBrains Mono', monospace; text-align: center; padding: 0 8px; }
+
+.card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.card-badge { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; display: inline-block; align-self: flex-start; }
+.badge-analyst { background: var(--analyst-light); color: var(--analyst); }
+.badge-engineer { background: var(--engineer-light); color: var(--engineer); }
+.badge-scientist { background: var(--scientist-light); color: var(--scientist); }
+.card-title { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 400; line-height: 1.3; color: var(--text); }
+.card-ctx { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text3); }
+.card-desc { font-size: 12px; color: var(--text2); line-height: 1.5; flex: 1; }
+.card-metric-n { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--orange); line-height: 1; }
+.card-metric-l { font-size: 10px; color: var(--text3); }
+.card-tools { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+.card-tool { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--text3); background: var(--cream); border: 0.5px solid var(--border); padding: 1px 6px; border-radius: 3px; }
+.card-cta { margin-top: 8px; font-size: 11px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
+.card-cta.analyst { color: var(--analyst); }
+.card-cta.engineer { color: var(--engineer); }
+.card-cta.scientist { color: var(--scientist); }
+.card-cta svg { width: 11px; height: 11px; }
+
+/* ── FOOTER ── */
+footer { background: var(--text); padding: 24px 44px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-name { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--cream); }
+.footer-info { font-size: 12px; color: #6B6560; }
+
+@media (max-width: 700px) {
+  .hero-main-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hero-name { font-size: 44px; line-height: 1.1;}
+  .esilv-grid, .hero-dims, .cards-grid { grid-template-columns: 1fr; }
+  .nav-inner, .hero, .esilv-section, .filters-bar, .projects-wrap, footer { padding-left: 24px; padding-right: 24px; }
+  .hero-dim { border-right: none; border-bottom: 0.5px solid var(--border2); }
+  .hero-dim:last-child { border-bottom: none; }
+}
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; margin-right: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
+</style>
+</head>
+<body>
+
+<div class="page-col">
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Portfolio — Branly DJIME</a>
+    <div class="nav-right">
+      <a class="nav-link" href="https://linkedin.com/in/branlydjime" target="_blank">LinkedIn</a>
+      <a class="nav-link" href="https://github.com/dbranly" target="_blank">GitHub</a>
+      <div class="lang-toggle"><button class="lang-btn" data-lang="fr">FR</button><span class="lang-sep">|</span><button class="lang-btn" data-lang="en">EN</button></div>
+      <a class="nav-cta" href="mailto:branly.djime@gmail.com" data-i18n="nav-contact">Me contacter</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow" data-i18n="hero-eyebrow">Ingénieur Data & IA · ESILV Courbevoie · Air France Industries · Mobile en France</div>
+  
+  <div class="hero-main-row">
+    <div class="hero-identity">
+      <div class="hero-name">Branly<br><em>DJIME</em></div>
+      <div class="hero-tagline" data-i18n="hero-tagline">Analyst · Engineer · Scientist</div>
+    </div>
+    
+    <div class="hero-desc" data-i18n="hero-desc">
+      Ma formation d'ingénieur à l'ESILV couvre les trois dimensions de la data : l'analyse décisionnelle, l'ingénierie des données et la science des données. Deux ans chez Air France Industries m'ont permis de les appliquer sur des sujets opérationnels réels, présentés aux directions.
+    </div>
+  </div>
+
+  <div class="hero-dims">
+    <div class="hero-dim">
+      <div class="dim-label analyst">Data Analyst</div>
+      <div class="dim-text">Reporting · Power BI · Automatisation · Aide à la décision</div>
+    </div>
+    <div class="hero-dim">
+      <div class="dim-label engineer">Data Engineer</div>
+      <div class="dim-text">Microsoft Fabric · dbt · Pipelines · Spark Big Data</div>
+    </div>
+    <div class="hero-dim">
+      <div class="dim-label scientist">Data Scientist</div>
+      <div class="dim-text">ML · Classification · Ensemble Learning · LLM & GenAI</div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div><div class="stat-n">14</div><div class="stat-l" data-i18n="stat-projects-l">Projets réalisés</div></div>
+      <div><div class="stat-n" data-i18n="stat-af-y">2 ans</div><div class="stat-l" data-i18n="stat-af-l">Chez Air France</div></div>
+      <div><div class="stat-n">Top 2/16</div><div class="stat-l" data-i18n="stat-ibm-l">IBM Hackathon</div></div>
+      <div><div class="stat-n">TOEIC 900</div><div class="stat-l" data-i18n="stat-toeic-l">Anglais courant</div></div>
+    </div>
+    <div class="hero-links">
+      <a class="hero-link" href="https://linkedin.com/in/branlydjime" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="hero-link" href="https://github.com/dbranly" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ESILV -->
+<section class="esilv-section">
+  <div class="section-title" data-i18n="esilv-title">Formation — ESILV, Cycle Ingénieur Data & IA</div>
+  <div class="section-sub" data-i18n="esilv-sub">Les modules suivis à l'ESILV valident la légitimité des trois dimensions de ce portfolio.</div>
+  <div class="esilv-grid">
+
+    <div class="esilv-card analyst">
+      <div class="esilv-card-top">
+        <div class="esilv-icon analyst">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="esilv-card-name analyst">Data Analyst</div>
+      </div>
+      <div class="esilv-modules" data-i18n="esilv-analyst-modules">BI Pipeline · Data Visualisation · Statistiques · Web Datamining · Data Management</div>
+      <div class="esilv-tools">
+        <span class="esilv-tool analyst">Power BI</span>
+        <span class="esilv-tool analyst">SQL</span>
+        <span class="esilv-tool analyst">Excel</span>
+        <span class="esilv-tool analyst">Matplotlib</span>
+        <span class="esilv-tool analyst">SAP/BI4</span>
+      </div>
+    </div>
+
+    <div class="esilv-card engineer">
+      <div class="esilv-card-top">
+        <div class="esilv-icon engineer">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <div class="esilv-card-name engineer">Data Engineer</div>
+      </div>
+      <div class="esilv-modules" data-i18n="esilv-engineer-modules">Spark Big Data · Big Data Structures · MLOps · NoSQL · Architecture de données</div>
+      <div class="esilv-tools">
+        <span class="esilv-tool engineer">Apache Spark</span>
+        <span class="esilv-tool engineer">Python</span>
+        <span class="esilv-tool engineer">Java</span>
+        <span class="esilv-tool engineer">Docker</span>
+        <span class="esilv-tool engineer">Git</span>
+      </div>
+    </div>
+
+    <div class="esilv-card scientist">
+      <div class="esilv-card-top">
+        <div class="esilv-icon scientist">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="esilv-card-name scientist">Data Scientist</div>
+      </div>
+      <div class="esilv-modules" data-i18n="esilv-scientist-modules">Machine Learning · Deep Learning · LLM & GenAI · Explainability AI · Algorithmes génétiques</div>
+      <div class="esilv-tools">
+        <span class="esilv-tool scientist">Scikit-learn</span>
+        <span class="esilv-tool scientist">TensorFlow</span>
+        <span class="esilv-tool scientist">DEAP</span>
+        <span class="esilv-tool scientist">Pandas</span>
+        <span class="esilv-tool scientist">NumPy</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <button class="filter-btn f-all active" data-filter="all" data-i18n="filter-all">Tous les projets</button>
+  <button class="filter-btn f-analyst" data-filter="analyst">Data Analyst</button>
+  <button class="filter-btn f-engineer" data-filter="engineer">Data Engineer</button>
+  <button class="filter-btn f-scientist" data-filter="scientist">Data Scientist</button>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects-wrap">
+
+  <!-- ANALYST -->
+  <div class="proj-section" id="section-analyst">
+    <div class="proj-section-head">
+      <span class="proj-bar bar-analyst"></span>
+      <span class="proj-section-title" data-i18n="section-analyst-title">Data Analyst</span>
+      <span class="proj-section-sub" data-i18n="section-analyst-sub">Air France Industries — DEA Data Office</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" data-spec="analyst" href="projects/saisonnalisation.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/saisonnalisation.png" alt="Saisonnalisation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/saisonnalisation.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-saison-title">Saisonnalisation — Migration SAP BI4 → Power BI</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-saison-desc">Migration et automatisation complète d'un rapport critique de planification de la maintenance pré-été.</div>
+          <div class="card-metric-n">9×</div><div class="card-metric-l" data-i18n="card-saisonnalisation-metric-l">plus rapide — 45 min → 5 min</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">DAX</span><span class="card-tool">Power Automate</span><span class="card-tool">SAP/BI4</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/empreinte-maintenance.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/empreinte.png" alt="Empreinte Maintenance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/empreinte.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-empreinte-title">Empreinte Maintenance</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-empreinte-desc">Suivi des immobilisations avions (hangar, piste, escale) : comparaison prévu/réel, catégorisation et suivi des dérives pour optimiser le temps de vol.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">DAX</span><span class="card-tool">SAP/BI4</span><span class="card-tool">SQL</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/occupation-hangar.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/occupation-hangar.png" alt="Occupation Hangar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/occupation-hangar.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-hangar-title">Taux d'Occupation & Activité Hangar</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-hangar-desc">Occupation des baies et taux d'activité : données de tractage partiellement manuelles standardisées via Power Query, croisées avec les tâches réalisées SAP/BI4.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">Power Query</span><span class="card-tool">SAP/BI4</span><span class="card-tool">Excel</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/deformation-programme.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/deformation.png" alt="Déformation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/deformation.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-deform-title">Déformation Programme</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-deform-desc">Détection automatique des ajouts, retraits et reports d'entretiens entre S-3, S-1 et S.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">DAX</span><span class="card-tool">SAP/BI4</span><span class="card-tool">SQL</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/eaux-embarquees.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/eaux-embarquees.png" alt="Eaux embarquées" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/eaux-embarquees.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-eaux-title">Suivi des Eaux Embarquées — HSE</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-eaux-desc">Conformité des analyses d'eau à bord par catégorie et par flotte, avec alerte automatisée hebdomadaire.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">Power Automate</span><span class="card-tool">SharePoint</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/starlink-cabine.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/starlink.png" alt="Starlink" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/starlink.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-starlink-title">Modifications Cabine & Performances Starlink</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-starlink-desc">Monitoring Wi-Fi Starlink via API SpaceX. Notifications automatiques + export PowerPoint métier.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">API Starlink</span><span class="card-tool">Power Automate</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="analyst" href="projects/primes-qt.html">
+        <div class="card-accent accent-analyst"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/primes-qt.png" alt="Primes QT" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>covers/primes-qt.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-analyst">Analyst</span>
+          <div class="card-title" data-i18n="card-primes-title">Attribution des Primes QT & Suivi RH</div>
+          <div class="card-ctx">Air France · 2024–2026</div>
+          <div class="card-desc" data-i18n="card-primes-desc">Pilotage des primes QT avec règles multi-critères et traitement conforme RGPD des données sensibles.</div>
+          <div class="card-tools"><span class="card-tool">Power BI</span><span class="card-tool">SAP/BI4</span><span class="card-tool">StationLog</span><span class="card-tool">RGPD</span></div>
+          <div class="card-cta analyst"><span data-i18n="cta-analyst">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ENGINEER -->
+  <div class="proj-section" id="section-engineer">
+    <div class="proj-section-head">
+      <span class="proj-bar bar-engineer"></span>
+      <span class="proj-section-title" data-i18n="section-engineer-title">Data Engineer</span>
+      <span class="proj-section-sub" data-i18n="section-engineer-sub">Projets personnels & académiques</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" data-spec="engineer" href="projects/fabric-logistique.html">
+        <div class="card-accent accent-engineer"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/fabric-logistique.jpg" alt="Fabric" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><span>covers/fabric-logistique.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-engineer">Engineer</span>
+          <div class="card-title">Modern Data Platform — Logistique & Pricing</div>
+          <div class="card-ctx">Projet personnel · 2025</div>
+          <div class="card-desc">Architecture ELT end-to-end sur Microsoft Fabric : 3 sources, dbt Kimball, Direct Lake.</div>
+          <div class="card-metric-n">E2E</div><div class="card-metric-l" data-i18n="card-logistique-metric-l">3 sources · pipeline orchestré</div>
+          <div class="card-tools"><span class="card-tool">MS Fabric</span><span class="card-tool">dbt Core</span><span class="card-tool">PySpark</span><span class="card-tool">Power BI</span></div>
+          <div class="card-cta engineer"><span data-i18n="cta-engineer">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="engineer" href="projects/bal-spark.html">
+        <div class="card-accent accent-engineer"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/bal-spark.png" alt="BAL Spark" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><span>covers/bal-spark.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-engineer">Engineer</span>
+          <div class="card-title" data-i18n="card-bal-title">BAL Spark — Stockage Incrémental Big Data</div>
+          <div class="card-ctx" data-i18n="ctx-academic-24">Projet académique · ESILV · 2024</div>
+          <div class="card-desc">Système CDC sur 30+ ans de données BAL française avec time-travel queries.</div>
+          <div class="card-metric-n">54×</div><div class="card-metric-l" data-i18n="card-bal-metric-l">réduction de stockage</div>
+          <div class="card-tools"><span class="card-tool">Apache Spark 3.4</span><span class="card-tool">Java 11</span><span class="card-tool">Maven</span></div>
+          <div class="card-cta engineer"><span data-i18n="cta-engineer">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- SCIENTIST -->
+  <div class="proj-section" id="section-scientist">
+    <div class="proj-section-head">
+      <span class="proj-bar bar-scientist"></span>
+      <span class="proj-section-title" data-i18n="section-scientist-title">Data Scientist</span>
+      <span class="proj-section-sub" data-i18n="section-scientist-sub">Hackathon & projets académiques</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" data-spec="scientist" href="projects/higgs-boson.html">
+        <div class="card-accent accent-scientist"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/higgs-boson.png" alt="Higgs Boson" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg><span>covers/higgs-boson.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-scientist">Scientist</span>
+          <div class="card-title" data-i18n="card-higgs-title">Higgs Boson Detection — ML Avancé</div>
+          <div class="card-ctx" data-i18n="ctx-academic-24">Projet académique · ESILV · 2024</div>
+          <div class="card-desc" data-i18n="card-higgs-desc">Pipeline GA + Active Learning + Ensemble Learning pour classification binaire signal vs bruit.</div>
+          <div class="card-metric-n">0.77</div><div class="card-metric-l" data-i18n="card-higgs-metric-l">F1-score · −91.9% temps d'entraînement</div>
+          <div class="card-tools"><span class="card-tool">Python</span><span class="card-tool">DEAP</span><span class="card-tool">Scikit-learn</span></div>
+          <div class="card-cta scientist"><span data-i18n="cta-scientist">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="scientist" href="projects/drone-ibm.html">
+        <div class="card-accent accent-scientist"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/drone-ibm.png" alt="IBM Drone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg><span>covers/drone-ibm.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-scientist">Scientist</span>
+          <div class="card-title" data-i18n="card-drone-title">Drone Fault Detection — IBM Hackathon</div>
+          <div class="card-ctx">IBM × Capgemini · 2024</div>
+          <div class="card-desc" data-i18n="card-drone-desc">Pipeline ML de détection d'anomalies et classification des défauts. Pitch devant jury IBM &amp; Capgemini.</div>
+          <div class="card-metric-n">#2</div><div class="card-metric-l" data-i18n="card-drone-metric-l">sur 16 équipes</div>
+          <div class="card-tools"><span class="card-tool">Python</span><span class="card-tool">Scikit-learn</span><span class="card-tool">Power BI</span></div>
+          <div class="card-cta scientist"><span data-i18n="cta-scientist">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+
+      <a class="card" data-spec="scientist" href="projects/q-prescription.html">
+        <div class="card-accent accent-scientist"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/q-prescription.png" alt="Q.Prescription" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg><span>covers/q-prescription.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-scientist">Scientist</span>
+          <div class="card-title" data-i18n="card-qprescription-title">Q.Prescription — Analyse IA de Prescriptions</div>
+          <div class="card-ctx" data-i18n="ctx-academic-26">Projet académique · ESILV · 2026</div>
+          <div class="card-desc" data-i18n="card-qprescription-desc">Pipeline adaptatif OCR + LLM (GPT-4o) pour l'extraction structurée de prescriptions médicales manuscrites et imprimées.</div>
+          <div class="card-tools"><span class="card-tool">PaddleOCR</span><span class="card-tool">GPT-4o</span><span class="card-tool">Streamlit</span></div>
+          <div class="card-cta scientist"><span data-i18n="cta-scientist">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="scientist" href="projects/xai-platform.html">
+        <div class="card-accent accent-scientist"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/xai-platform.png" alt="XAI Platform" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg><span>covers/xai-platform.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-scientist">Scientist</span>
+          <div class="card-title" data-i18n="card-xai-title">Unified XAI Platform</div>
+          <div class="card-ctx" data-i18n="ctx-academic-25">Projet académique · ESILV · 2025</div>
+          <div class="card-desc" data-i18n="card-xai-desc">Plateforme XAI multi-modale : 7 méthodes d'explicabilité (LIME, Grad-CAM, SHAP) sur radiographies thoraciques et deepfakes audio.</div>
+          <div class="card-metric-n">7</div><div class="card-metric-l" data-i18n="card-xai-metric-l">méthodes XAI · 18 pathologies</div>
+          <div class="card-tools"><span class="card-tool">PyTorch</span><span class="card-tool">LIME</span><span class="card-tool">Grad-CAM</span><span class="card-tool">SHAP</span></div>
+          <div class="card-cta scientist"><span data-i18n="cta-scientist">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a class="card" data-spec="scientist" href="projects/cegi-paie.html">
+        <div class="card-accent accent-scientist"></div>
+        <div class="card-img">
+          <img src="assets/images/covers/cegi-paie.png" alt="CEGI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="card-img-placeholder" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg><span>covers/cegi-paie.png</span></div>
+        </div>
+        <div class="card-body">
+          <span class="card-badge badge-scientist">Scientist</span>
+          <div class="card-title" data-i18n="card-cegi-title">CEGI — Vérificateur de Fiches de Paie</div>
+          <div class="card-ctx" data-i18n="ctx-academic-25">Projet académique · ESILV · 2025</div>
+          <div class="card-desc" data-i18n="card-cegi-desc">Application fullstack de vérification réglementaire des bulletins de salaire et calcul d'indemnités, avec analyse LLM Gemini.</div>
+          <div class="card-metric-n">7</div><div class="card-metric-l" data-i18n="card-cegi-metric-l">vérifications réglementaires auto</div>
+          <div class="card-tools"><span class="card-tool">FastAPI</span><span class="card-tool">React</span><span class="card-tool">Gemini</span><span class="card-tool">Docker</span></div>
+          <div class="card-cta scientist"><span data-i18n="cta-scientist">Voir le projet</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Branly DJIME</span>
+    <span class="footer-info" data-i18n="footer-info">branly.djime@gmail.com · Mobile en France · 2026</span>
+  </div>
+</footer>
+
+</div><!-- end page-col -->
+
+<script>
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+const sections = {
+  analyst: document.getElementById('section-analyst'),
+  engineer: document.getElementById('section-engineer'),
+  scientist: document.getElementById('section-scientist')
+};
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    filterBtns.forEach(b => b.className = b.className.replace(/\s*active/g,''));
+    btn.classList.add('active');
+    if (f === 'all') {
+      cards.forEach(c => c.classList.remove('hidden'));
+      Object.values(sections).forEach(s => s.style.display = '');
+    } else {
+      cards.forEach(c => c.dataset.spec === f ? c.classList.remove('hidden') : c.classList.add('hidden'));
+      Object.entries(sections).forEach(([k,s]) => s.style.display = k === f ? '' : 'none');
+    }
+  });
+});
+</script>
+
+<script src="assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "card-higgs-title": "Higgs Boson Detection — ML Avancé",
+    "card-higgs-desc": "Pipeline GA + Active Learning + Ensemble Learning pour classification binaire signal vs bruit.",
+    "card-higgs-metric-l": "F1-score · −91.9% temps d'entraînement",
+    "card-drone-title": "Drone Fault Detection — IBM Hackathon",
+    "card-drone-desc": "Pipeline ML de détection d'anomalies et classification des défauts. Pitch devant jury IBM & Capgemini.",
+    "card-drone-metric-l": "sur 16 équipes",
+    "card-bal-title": "BAL Spark — Stockage Incrémental Big Data",
+    "ctx-academic-24": "Projet académique · ESILV · 2024",
+    "ctx-academic-25": "Projet académique · ESILV · 2025",
+    "ctx-academic-26": "Projet académique · ESILV · Jan. 2026",
+    "ctx-perso-25": "Projet personnel · 2025",
+    "card-qprescription-title": "Q.Prescription — Analyse IA de Prescriptions",
+    "card-qprescription-desc": "Pipeline adaptatif OCR + LLM (GPT-4o) pour l'extraction structurée de prescriptions médicales manuscrites et imprimées.",
+    "card-xai-title": "Unified XAI Platform",
+    "card-xai-desc": "Plateforme XAI multi-modale : 7 méthodes d'explicabilité (LIME, Grad-CAM, SHAP) sur radiographies thoraciques et deepfakes audio.",
+    "card-xai-metric-l": "méthodes XAI · 18 pathologies",
+    "card-cegi-title": "CEGI — Vérificateur de Fiches de Paie",
+    "card-cegi-desc": "Application fullstack de vérification réglementaire des bulletins de salaire et calcul d'indemnités, avec analyse LLM Gemini.",
+    "card-cegi-metric-l": "vérifications réglementaires auto",
+    "footer-info": "branly.djime@gmail.com · Mobile en France · 2026",
+    "nav-contact": "Me contacter",
+    "hero-eyebrow": "Ingénieur Data &amp; IA · ESILV Courbevoie · Air France Industries · Mobile en France",
+    "hero-tagline": "Profil 360° — Analyst · Engineer · Scientist",
+    "hero-desc": "Ma formation d'ingénieur à l'ESILV couvre les trois dimensions de la data : l'analyse décisionnelle, l'ingénierie des données et la science des données. Deux ans chez Air France Industries m'ont permis de les appliquer sur des sujets opérationnels réels, présentés aux directions.",
+    "dim-analyst-text": "Reporting · Power BI · Automatisation · Aide à la décision",
+    "dim-engineer-text": "Microsoft Fabric · dbt · Pipelines · Spark Big Data",
+    "dim-scientist-text": "ML · Classification · Ensemble Learning · LLM &amp; GenAI",
+    "stat-projects-l": "Projets réalisés",
+    "stat-af-y": "2 ans",
+    "stat-af-l": "Chez Air France",
+    "stat-ibm-l": "IBM Hackathon",
+    "stat-toeic-l": "Anglais courant",
+    "esilv-title": "Formation — ESILV, Cycle Ingénieur Data &amp; IA",
+    "esilv-sub": "Les modules suivis à l'ESILV valident la légitimité des trois dimensions de ce portfolio.",
+    "esilv-analyst-modules": "BI Pipeline · Data Visualisation · Statistiques · Web Datamining · Data Management",
+    "esilv-engineer-modules": "Spark Big Data · Big Data Structures · MLOps · NoSQL · Architecture de données",
+    "esilv-scientist-modules": "Machine Learning · Deep Learning · LLM &amp; GenAI · Explainability AI · Algorithmes génétiques",
+    "filter-all": "Tous les projets",
+    "section-analyst-title": "Data Analyst",
+    "section-analyst-sub": "Air France Industries — DEA Data Office",
+    "section-engineer-title": "Data Engineer",
+    "section-engineer-sub": "Projets personnels &amp; académiques",
+    "card-saison-title": "Saisonnalisation — Migration SAP BI4 → Power BI",
+    "card-saison-desc": "Migration et automatisation complète d'un rapport critique de planification de la maintenance pré-été.",
+    "card-saisonnalisation-metric-l": "plus rapide — 45 min → 5 min",
+    "card-empreinte-title": "Empreinte Maintenance",
+    "card-empreinte-desc": "Suivi des immobilisations avions (hangar, piste, escale) : comparaison prévu/réel, catégorisation et suivi des dérives pour optimiser le temps de vol.",
+    "card-hangar-desc": "Occupation des baies et taux d'activité : données de tractage partiellement manuelles standardisées via Power Query, croisées avec les tâches réalisées SAP/BI4.",
+    "card-deform-title": "Déformation Programme",
+    "card-deform-desc": "Détection automatique des ajouts, retraits et reports d'entretiens entre S-3, S-1 et S.",
+    "card-eaux-title": "Suivi des Eaux Embarquées — HSE",
+    "card-eaux-desc": "Conformité des analyses d'eau à bord par catégorie et par flotte, avec alerte automatisée hebdomadaire.",
+    "card-starlink-title": "Modifications Cabine & Performances Starlink",
+    "card-starlink-desc": "Monitoring Wi-Fi Starlink via API SpaceX. Notifications automatiques + export PowerPoint métier.",
+    "card-primes-title": "Attribution des Primes QT & Suivi RH",
+    "card-primes-desc": "Pilotage des primes QT avec règles multi-critères et traitement conforme RGPD des données sensibles.",
+    "card-logistique-metric-l": "3 sources · pipeline orchestré",
+    "card-bal-metric-l": "réduction de stockage",
+    "section-scientist-title": "Data Scientist",
+    "section-scientist-sub": "Hackathon &amp; projets académiques",
+    "cta-analyst": "Voir le projet",
+    "cta-engineer": "Voir le projet",
+    "cta-scientist": "Voir le projet",
+    "footer-info": "branly.djime@gmail.com · Mobile en France · 2026",
+  },
+  en: {
+    "card-higgs-title": "Higgs Boson Detection — Advanced ML",
+    "card-higgs-desc": "GA + Active Learning + Ensemble Learning pipeline for binary signal vs noise classification.",
+    "card-higgs-metric-l": "F1-score · −91.9% training time",
+    "card-drone-title": "Drone Fault Detection — IBM Hackathon",
+    "card-drone-desc": "ML pipeline for anomaly detection and fault classification. Pitch to IBM & Capgemini jury.",
+    "card-drone-metric-l": "out of 16 teams",
+    "card-bal-title": "BAL Spark — Incremental Big Data Storage",
+    "ctx-academic-24": "Academic project · ESILV · 2024",
+    "ctx-academic-25": "Academic project · ESILV · 2025",
+    "ctx-academic-26": "Academic project · ESILV · Jan. 2026",
+    "ctx-perso-25": "Personal project · 2025",
+    "card-qprescription-title": "Q.Prescription — AI Prescription Analysis",
+    "card-qprescription-desc": "Adaptive OCR + LLM (GPT-4o) pipeline for structured extraction of handwritten and printed medical prescriptions.",
+    "card-xai-title": "Unified XAI Platform",
+    "card-xai-desc": "Multi-modal XAI platform: 7 explainability methods (LIME, Grad-CAM, SHAP) on chest X-rays and audio deepfakes.",
+    "card-xai-metric-l": "XAI methods · 18 pathologies",
+    "card-cegi-title": "CEGI — Payroll Verification Tool",
+    "card-cegi-desc": "Full-stack regulatory payslip verification and dismissal indemnity calculation, with Gemini LLM analysis.",
+    "card-cegi-metric-l": "automatic regulatory checks",
+    "footer-info": "branly.djime@gmail.com · Mobile across France · 2026",
+    "nav-contact": "Contact me",
+    "hero-eyebrow": "Data &amp; AI Engineer · ESILV Courbevoie · Air France Industries · Mobile across France",
+    "hero-tagline": "360° Profile — Analyst · Engineer · Scientist",
+    "hero-desc": "My engineering degree at ESILV covers all three dimensions of data: business intelligence, data engineering, and data science. Two years at Air France Industries gave me the opportunity to apply them on real operational projects, presented to senior management.",
+    "dim-analyst-text": "Reporting · Power BI · Automation · Decision support",
+    "dim-engineer-text": "Microsoft Fabric · dbt · Pipelines · Spark Big Data",
+    "dim-scientist-text": "ML · Classification · Ensemble Learning · LLM &amp; GenAI",
+    "stat-projects-l": "Projects completed",
+    "stat-af-y": "2 years",
+    "stat-af-l": "At Air France",
+    "stat-ibm-l": "IBM Hackathon",
+    "stat-toeic-l": "Fluent English",
+    "esilv-title": "Education — ESILV, Data &amp; AI Engineering Degree",
+    "esilv-sub": "The modules studied at ESILV underpin the legitimacy of all three dimensions of this portfolio.",
+    "esilv-analyst-modules": "BI Pipeline · Data Visualisation · Statistics · Web Datamining · Data Management",
+    "esilv-engineer-modules": "Spark Big Data · Big Data Structures · MLOps · NoSQL · Data Architecture",
+    "esilv-scientist-modules": "Machine Learning · Deep Learning · LLM &amp; GenAI · Explainability AI · Genetic Algorithms",
+    "filter-all": "All projects",
+    "section-analyst-title": "Data Analyst",
+    "section-analyst-sub": "Air France Industries — DEA Data Office",
+    "card-saison-title": "Seasonal Planning — Migration SAP BI4 → Power BI",
+    "card-saison-desc": "Full migration and automation of a critical pre-summer maintenance planning report.",
+    "card-saisonnalisation-metric-l": "faster — 45 min → 5 min",
+    "card-empreinte-title": "Maintenance Footprint",
+    "card-empreinte-desc": "Aircraft ground immobilization tracking (hangar, tarmac, outstation): planned vs. actual comparison, categorization, and drift analysis to optimize flight hours.",
+    "card-hangar-title": "Hangar Occupancy & Activity Rate",
+    "card-hangar-desc": "Bay occupancy and activity tracking: standardized partially manual towing data via Power Query, cross-referenced with SAP/BI4 completed tasks.",
+    "card-deform-title": "Flight Schedule Deformation",
+    "card-deform-desc": "Automated detection of maintenance additions, removals, and delays between weeks W-3, W-1, and W.",
+    "card-eaux-title": "Potable Water Monitoring — HSE",
+    "card-eaux-desc": "Inflight water analysis compliance tracking by category and fleet, featuring automated weekly alerts.",
+    "card-starlink-title": "Cabin Modifications & Starlink Performance",
+    "card-starlink-desc": "Starlink Wi-Fi monitoring via SpaceX API. Automated notifications + functional PowerPoint report exports.",
+    "card-primes-title": "QT Bonuses Allocation & HR Tracking",
+    "card-primes-desc": "QT bonus steering with multi-criteria rules and GDPR-compliant processing of sensitive data.",
+    "card-logistique-metric-l": "3 sources · orchestrated pipeline",
+    "card-bal-metric-l": "storage reduction",
+    "section-engineer-title": "Data Engineer",
+    "section-engineer-sub": "Personal &amp; academic projects",
+    "section-scientist-title": "Data Scientist",
+    "section-scientist-sub": "Hackathon &amp; academic projects",
+    "cta-analyst": "View project",
+    "cta-engineer": "View project",
+    "cta-scientist": "View project",
+    "footer-info": "branly.djime@gmail.com · Mobile across France · 2026",
+  }
+};
+initI18n(translations);
+</script>
+</body>
+</html>
