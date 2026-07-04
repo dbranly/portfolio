@@ -108,6 +108,21 @@ footer { background: var(--text); padding: 22px 44px; }
   transition: color 0.15s;
 }
 .lightbox-close:hover { color: #fff; }
+
+@media (max-width: 700px) {
+  .nav-inner { padding: 0 18px; }
+  .nav-logo { display: none; }
+  .proj-header { padding: 32px 18px 28px; }
+  .proj-title { font-size: 26px; }
+  .proj-content { padding: 28px 18px 48px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .proj-nav-bottom { flex-direction: column; gap: 10px; }
+  .nav-btn { justify-content: center; }
+  footer { padding: 18px; }
+  .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
+}
+
+
 </style>
 </head>
 <body>
