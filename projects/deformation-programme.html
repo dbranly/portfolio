@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,27 +93,32 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Analyst</div>
-  <div class="proj-title">Déformation Programme</div>
-  <div class="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
-  <div class="proj-summary">Suivi du respect des dates de réalisation des entretiens protocolaires planifiés par les fournisseurs et la compagnie. Mesure du taux de déplacement des immobilisations entre S-3, S-1 et S : ajouts, retraits et reports détectés automatiquement semaine après semaine.</div>
+  <div class="proj-badge" data-i18n="badge">Data Analyst</div>
+  <div class="proj-title" data-i18n="proj-title">Déformation Programme</div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
+  <div class="proj-summary" data-i18n="proj-summary">Suivi du respect des dates de réalisation des entretiens protocolaires planifiés par les fournisseurs et la compagnie. Mesure du taux de déplacement des immobilisations entre S-3, S-1 et S : ajouts, retraits et reports détectés automatiquement semaine après semaine.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">S-3 / S-1 / S</div><div class="metric-l">Comparaison 3 horizons</div></div>
-    <div><div class="metric-n">Auto</div><div class="metric-l">Détection des écarts</div></div>
+    <div><div class="metric-n">S-3 / S-1 / S</div><div class="metric-l" data-i18n="m1l">Comparaison 3 horizons</div></div>
+    <div><div class="metric-n">Auto</div><div class="metric-l" data-i18n="m2l">Détection des écarts</div></div>
   </div>
 </header>
 
 <div class="proj-content">
 
   <div class="proj-demo">
-    <div class="block-label">Aperçu du rapport</div>
+    <div class="block-label" data-i18n="label-demo">Aperçu du rapport</div>
     <div class="demo-media" data-lightbox>
       <img src="../assets/images/projects/deformation/demo.gif" alt="Démo">
       <!--
@@ -125,17 +136,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>Les immobilisations protocolaires sont planifiées à l'avance (S-3 = 3 semaines avant, S-1 = 1 semaine avant, S = semaine courante). Des décalages fréquents entre planification initiale et réalisation effective impactent la disponibilité des avions et la charge des équipes. Il était difficile de quantifier et de catégoriser ces dérives sans outil dédié.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>Les immobilisations protocolaires sont planifiées à l'avance (S-3 = 3 semaines avant, S-1 = 1 semaine avant, S = semaine courante). Des décalages fréquents entre planification initiale et réalisation effective impactent la disponibilité des avions et la charge des équipes. Il était difficile de quantifier et de catégoriser ces dérives sans outil dédié.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Solution développée</div>
-    <div class="proj-desc-text"><p>Développement d'un outil de comparaison automatique entre les trois horizons de planification. Les ajouts, retraits et reports d'immobilisations sont détectés et présentés sous forme de KPIs et de visualisations permettant aux managers d'identifier rapidement les causes récurrentes de déformation du programme.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Solution développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Développement d'un outil de comparaison automatique entre les trois horizons de planification. Les ajouts, retraits et reports d'immobilisations sont détectés et présentés sous forme de KPIs et de visualisations permettant aux managers d'identifier rapidement les causes récurrentes de déformation du programme.</p></div>
   </div>
   <!--
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/deformation/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -157,7 +168,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Power BI</span>
       <span class="tool-tag">DAX</span>
@@ -170,10 +181,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="occupation-hangar.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="eaux-embarquees.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -183,7 +194,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -212,6 +223,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Déformation Programme`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Suivi du respect des dates de réalisation des entretiens protocolaires planifiés. Mesure du taux de déplacement des immobilisations entre S-3, S-1 et S : ajouts, retraits et reports détectés automatiquement semaine après semaine.`,
+    "label-demo": `Aperçu du rapport`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `Les immobilisations protocolaires sont planifiées à l'avance (S-3, S-1, S). Des décalages fréquents entre planification initiale et réalisation effective impactent la disponibilité des avions et la charge des équipes. Il était difficile de quantifier ces dérives sans outil dédié.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Développement d'un outil de comparaison automatique entre les trois horizons de planification. Les ajouts, retraits et reports d'immobilisations sont détectés et présentés sous forme de KPIs et visualisations permettant aux managers d'identifier rapidement les causes récurrentes de déformation du programme.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `Comparaison 3 horizons`,
+    "m2l": `Détection des écarts`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Programme Deformation`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Tracking of scheduled maintenance compliance dates. Measurement of the grounding shift rate between W-3, W-1 and current week: additions, removals and reschedulings detected automatically week after week.`,
+    "label-demo": `Report overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `Protocol groundings are planned in advance (W-3, W-1, current week). Frequent gaps between initial planning and actual execution impact aircraft availability and team workload. Quantifying these deviations was difficult without a dedicated tool.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `Development of an automatic comparison tool across the three planning horizons. Additions, removals and reschedulings are detected and displayed as KPIs and visualisations, enabling managers to quickly identify recurring causes of programme deformation.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `3 planning horizons`,
+    "m2l": `Automatic gap detection`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

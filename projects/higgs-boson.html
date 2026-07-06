@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,20 +93,25 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Scientist</div>
-  <div class="proj-title">Higgs Boson Detection<br><span style='font-style:italic;color:var(--orange)'>Machine Learning Avancé</span></div>
-  <div class="proj-ctx">Projet académique · ESILV · Kaggle Dataset · 2024</div>
-  <div class="proj-summary">Pipeline de classification binaire (signal vs bruit) sur dataset Kaggle combinant algorithme génétique (DEAP), Active Learning et Ensemble Learning pour optimiser la sélection des données à haute valeur informative. F1-score de 0.77 avec une réduction de 91.9 % du temps d'entraînement.</div>
+  <div class="proj-badge" data-i18n="badge">Data Scientist</div>
+  <div class="proj-title" data-i18n="proj-title">Higgs Boson Detection<br><span style='font-style:italic;color:var(--orange)'>Machine Learning Avancé</span></div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Projet académique · ESILV · Kaggle Dataset · 2024</div>
+  <div class="proj-summary" data-i18n="proj-summary">Pipeline de classification binaire (signal vs bruit) sur dataset Kaggle combinant algorithme génétique (DEAP), Active Learning et Ensemble Learning pour optimiser la sélection des données à haute valeur informative. F1-score de 0.77 avec une réduction de 91.9 % du temps d'entraînement.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">0.77</div><div class="metric-l">F1-score</div></div>
-    <div><div class="metric-n">−91.9%</div><div class="metric-l">Temps d'entraînement (12×)</div></div>
+    <div><div class="metric-n">0.77</div><div class="metric-l" data-i18n="m1l">F1-score</div></div>
+    <div><div class="metric-n">−91.9%</div><div class="metric-l" data-i18n="m2l">Temps d'entraînement (12×)</div></div>
   </div>
 </header>
 
@@ -123,17 +134,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>Le dataset Higgs Boson du CERN (Kaggle) présente un défi classique de classification binaire à haute dimensionnalité : distinguer les événements signal (boson de Higgs) du bruit de fond. L'enjeu était d'optimiser à la fois la performance du modèle et le temps d'entraînement sur un grand volume de données.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>Le dataset Higgs Boson du CERN (Kaggle) présente un défi classique de classification binaire à haute dimensionnalité : distinguer les événements signal (boson de Higgs) du bruit de fond. L'enjeu était d'optimiser à la fois la performance du modèle et le temps d'entraînement sur un grand volume de données.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Pipeline développé</div>
-    <div class="proj-desc-text"><p>Trois techniques combinées : (1) Algorithme génétique avec DEAP pour la sélection automatique des features et hyperparamètres optimaux. (2) Active Learning pour sélectionner intelligemment les exemples d'entraînement les plus informatifs, réduisant le volume nécessaire de 91.9%. (3) Ensemble Learning (bagging + boosting) pour maximiser le F1-score sur les données sélectionnées. Résultat : F1-score de 0.77 avec un pipeline 12× plus rapide qu'une approche naïve.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Pipeline développé</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Trois techniques combinées : (1) Algorithme génétique avec DEAP pour la sélection automatique des features et hyperparamètres optimaux. (2) Active Learning pour sélectionner intelligemment les exemples d'entraînement les plus informatifs, réduisant le volume nécessaire de 91.9%. (3) Ensemble Learning (bagging + boosting) pour maximiser le F1-score sur les données sélectionnées. Résultat : F1-score de 0.77 avec un pipeline 12× plus rapide qu'une approche naïve.</p></div>
   </div>
 <!--
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/higgs-boson/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -155,7 +166,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Python</span>
       <span class="tool-tag">DEAP</span>
@@ -168,10 +179,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="bal-spark.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="drone-ibm.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -181,7 +192,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -210,6 +221,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Scientist`,
+    "proj-title": `Higgs Boson Detection<br><span style='font-style:italic;color:var(--orange)'>Machine Learning Avancé</span>`,
+    "proj-ctx": `Projet académique · ESILV · Kaggle · 2024`,
+    "proj-summary": `Pipeline de classification binaire (signal vs bruit) combinant algorithme génétique (DEAP), Active Learning et Ensemble Learning. F1-score de 0.77 avec réduction de 91.9% du temps d'entraînement (12× plus rapide).`,
+    "label-demo": `Aperçu du projet`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `Le dataset Higgs Boson du CERN (Kaggle) présente un défi de classification binaire à haute dimensionnalité : distinguer les événements signal (boson de Higgs) du bruit de fond. L'enjeu était d'optimiser à la fois la performance du modèle et le temps d'entraînement sur un grand volume de données.`,
+    "ctx2-title": `Pipeline développé`,
+    "p2": `Trois techniques combinées : (1) Algorithme génétique DEAP pour la sélection automatique des features et hyperparamètres. (2) Active Learning pour sélectionner les exemples les plus informatifs, réduisant le volume nécessaire de 91.9%. (3) Ensemble Learning pour maximiser le F1-score. Résultat : F1 0.77, pipeline 12× plus rapide qu'une approche naïve.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `F1-score`,
+    "m2l": `−91.9% temps d'entraînement`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Scientist`,
+    "proj-title": `Higgs Boson Detection<br><span style='font-style:italic;color:var(--orange)'>Advanced Machine Learning</span>`,
+    "proj-ctx": `Academic project · ESILV · Kaggle · 2024`,
+    "proj-summary": `Binary classification pipeline (signal vs noise) combining genetic algorithm (DEAP), Active Learning and Ensemble Learning. F1-score of 0.77 with 91.9% reduction in training time (12× faster).`,
+    "label-demo": `Project overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `The CERN Higgs Boson dataset (Kaggle) presents a high-dimensional binary classification challenge: distinguishing signal events (Higgs boson) from background noise. The goal was to optimise both model performance and training time on a large dataset.`,
+    "ctx2-title": `Pipeline developed`,
+    "p2": `Three combined techniques: (1) DEAP genetic algorithm for automatic feature and hyperparameter selection. (2) Active Learning to select the most informative training examples, reducing the required volume by 91.9%. (3) Ensemble Learning to maximise the F1-score. Result: F1 0.77, pipeline 12× faster than a naive approach.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `F1-score`,
+    "m2l": `−91.9% training time`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

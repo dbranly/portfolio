@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,27 +93,32 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Engineer</div>
-  <div class="proj-title">BAL Spark<br><span style='font-style:italic;color:var(--orange)'>Stockage Incrémental Big Data</span></div>
-  <div class="proj-ctx">Projet académique · ESILV · 2024</div>
-  <div class="proj-summary">Implémentation d'un système de stockage incrémental de la Base Adresse Locale française sur 30+ ans de données, avec pattern Change Data Capture (CDC). Résultat : réduction de stockage 54× vs approche naïve, avec time-travel queries et tracking complet des changements.</div>
+  <div class="proj-badge" data-i18n="badge">Data Engineer</div>
+  <div class="proj-title" data-i18n="proj-title">BAL Spark<br><span style='font-style:italic;color:var(--orange)'>Stockage Incrémental Big Data</span></div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Projet académique · ESILV · 2024</div>
+  <div class="proj-summary" data-i18n="proj-summary">Implémentation d'un système de stockage incrémental de la Base Adresse Locale française sur 30+ ans de données, avec pattern Change Data Capture (CDC). Résultat : réduction de stockage 54× vs approche naïve, avec time-travel queries et tracking complet des changements.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">54×</div><div class="metric-l">Réduction de stockage</div></div>
-    <div><div class="metric-n">30+ ans</div><div class="metric-l">De données historiques</div></div>
+    <div><div class="metric-n">54×</div><div class="metric-l" data-i18n="m1l">Réduction de stockage</div></div>
+    <div><div class="metric-n">30+ ans</div><div class="metric-l" data-i18n="m2l">De données historiques</div></div>
   </div>
 </header>
 
 <div class="proj-content">
 <!--
   <div class="proj-demo">
-    <div class="block-label">Aperçu du rapport</div>
+    <div class="block-label" data-i18n="label-demo">Aperçu du rapport</div>
     <div class="demo-media" data-lightbox>
       
         Ajouter ici un GIF, vidéo ou image principale :
@@ -123,17 +134,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>La Base Adresse Locale française est une donnée de référence mise à jour régulièrement. Stocker l'intégralité des snapshots historiques de manière naïve (copie complète à chaque mise à jour) entraîne une explosion du volume de stockage et rend les requêtes temporelles extrêmement coûteuses.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>La Base Adresse Locale française est une donnée de référence mise à jour régulièrement. Stocker l'intégralité des snapshots historiques de manière naïve (copie complète à chaque mise à jour) entraîne une explosion du volume de stockage et rend les requêtes temporelles extrêmement coûteuses.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Solution développée</div>
-    <div class="proj-desc-text"><p>Implémentation d'un système CDC (Change Data Capture) sur Apache Spark 3.4 en Java 11. Seuls les deltas (inserts, updates, deletes) sont stockés à chaque version, permettant de reconstruire l'état à n'importe quel instant via time-travel queries. Résultat : réduction de stockage de 54× par rapport à l'approche naïve avec conservation de l'intégralité de l'historique.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Solution développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Implémentation d'un système CDC (Change Data Capture) sur Apache Spark 3.4 en Java 11. Seuls les deltas (inserts, updates, deletes) sont stockés à chaque version, permettant de reconstruire l'état à n'importe quel instant via time-travel queries. Résultat : réduction de stockage de 54× par rapport à l'approche naïve avec conservation de l'intégralité de l'historique.</p></div>
   </div>
 <!--
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/bal-spark/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -155,7 +166,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Apache Spark 3.4</span>
       <span class="tool-tag">Java 11</span>
@@ -167,10 +178,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="fabric-logistique.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="higgs-boson.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -180,7 +191,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -209,6 +220,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Engineer`,
+    "proj-title": `BAL Spark<br><span style='font-style:italic;color:var(--orange)'>Stockage Incrémental Big Data</span>`,
+    "proj-ctx": `Projet académique · ESILV · 2024`,
+    "proj-summary": `Implémentation d'un système de stockage incrémental de la Base Adresse Locale française sur 30+ ans de données, avec pattern Change Data Capture (CDC). Résultat : réduction de stockage 54× vs approche naïve, avec time-travel queries et tracking complet des changements.`,
+    "label-demo": `Aperçu du rapport`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `La Base Adresse Locale française est une donnée de référence mise à jour régulièrement. Stocker l'intégralité des snapshots historiques de manière naïve entraîne une explosion du volume de stockage et rend les requêtes temporelles extrêmement coûteuses.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Implémentation d'un système CDC sur Apache Spark 3.4 en Java 11. Seuls les deltas (inserts, updates, deletes) sont stockés à chaque version, permettant de reconstruire l'état à n'importe quel instant via time-travel queries. Résultat : réduction de stockage de 54× avec conservation de l'intégralité de l'historique.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `Réduction de stockage`,
+    "m2l": `De données historiques`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Engineer`,
+    "proj-title": `BAL Spark<br><span style='font-style:italic;color:var(--orange)'>Incremental Big Data Storage</span>`,
+    "proj-ctx": `Academic project · ESILV · 2024`,
+    "proj-summary": `Implementation of an incremental storage system for the French Local Address Database over 30+ years of data, using the Change Data Capture (CDC) pattern. Result: 54× storage reduction vs naive approach, with time-travel queries and full change tracking.`,
+    "label-demo": `Report overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `The French Local Address Database is a regularly updated reference dataset. Storing complete historical snapshots naively leads to exponential storage growth and makes time-based queries extremely costly.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `CDC system implementation on Apache Spark 3.4 in Java 11. Only deltas (inserts, updates, deletes) are stored at each version, enabling state reconstruction at any point in time via time-travel queries. Result: 54× storage reduction while retaining the full historical record.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `Storage reduction`,
+    "m2l": `Of historical data`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

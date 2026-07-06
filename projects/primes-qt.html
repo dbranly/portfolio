@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,27 +93,32 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Analyst</div>
-  <div class="proj-title">Attribution des Primes QT<br>& Suivi RH</div>
-  <div class="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
-  <div class="proj-summary">Pilotage de l'attribution des primes Qualifications Techniques : règles métier multi-critères (nombre d'interventions sur deux semestres, validité des habilitations QT, niveau d'anglais certifié). Traitement rigoureux des données personnelles dans le respect des exigences RGPD.</div>
+  <div class="proj-badge" data-i18n="badge">Data Analyst</div>
+  <div class="proj-title" data-i18n="proj-title">Attribution des Primes QT<br>& Suivi RH</div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
+  <div class="proj-summary" data-i18n="proj-summary">Pilotage de l'attribution des primes Qualifications Techniques : règles métier multi-critères (nombre d'interventions sur deux semestres, validité des habilitations QT, niveau d'anglais certifié). Traitement rigoureux des données personnelles dans le respect des exigences RGPD.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">3 critères</div><div class="metric-l">Interventions · QT · Anglais</div></div>
-    <div><div class="metric-n">RGPD</div><div class="metric-l">Données personnelles</div></div>
+    <div><div class="metric-n">3 critères</div><div class="metric-l" data-i18n="m1l">Interventions · QT · Anglais</div></div>
+    <div><div class="metric-n">RGPD</div><div class="metric-l" data-i18n="m2l">Données personnelles</div></div>
   </div>
 </header>
 
 <div class="proj-content">
 
   <div class="proj-demo">
-    <div class="block-label">Aperçu du rapport</div>
+    <div class="block-label" data-i18n="label-demo">Aperçu du rapport</div>
     <div class="demo-media" data-lightbox>
       <img src="../assets/images/projects/primes-qt/img-1.png" alt="Vue principale">
       <!--
@@ -125,17 +136,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>L'attribution des primes Qualifications Techniques aux techniciens de maintenance repose sur des règles métier complexes : le nombre d'interventions réalisées sur les deux derniers semestres, la validité des qualifications techniques en cours, et le niveau d'anglais certifié. La consolidation manuelle de ces critères issus de systèmes différents était source d'erreurs et de délais.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>L'attribution des primes Qualifications Techniques aux techniciens de maintenance repose sur des règles métier complexes : le nombre d'interventions réalisées sur les deux derniers semestres, la validité des qualifications techniques en cours, et le niveau d'anglais certifié. La consolidation manuelle de ces critères issus de systèmes différents était source d'erreurs et de délais.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Solution développée</div>
-    <div class="proj-desc-text"><p>Développement d'un rapport Power BI consolidant les données issues de SAP/BI4 et de StationLog (application interne) pour appliquer automatiquement les règles d'éligibilité aux primes. Traitement conforme RGPD des données personnelles sensibles (identités, niveaux de qualification, certifications). Le rapport est présenté lors des comités RH avec filtres par direction et par période.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Solution développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Développement d'un rapport Power BI consolidant les données issues de SAP/BI4 et de StationLog (application interne) pour appliquer automatiquement les règles d'éligibilité aux primes. Traitement conforme RGPD des données personnelles sensibles (identités, niveaux de qualification, certifications). Le rapport est présenté lors des comités RH avec filtres par direction et par période.</p></div>
   </div>
 <!--
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/primes-qt/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -157,7 +168,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Power BI</span>
       <span class="tool-tag">DAX</span>
@@ -170,10 +181,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="starlink-cabine.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="fabric-logistique.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -183,7 +194,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -212,6 +223,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Attribution des Primes QT<br><span style='font-style:italic;color:var(--orange)'>& Suivi RH</span>`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Pilotage de l'attribution des primes Qualifications Techniques : règles métier multi-critères (nombre d'interventions sur deux semestres, validité des habilitations QT, niveau d'anglais certifié). Traitement rigoureux des données personnelles dans le respect du RGPD.`,
+    "label-demo": `Aperçu du rapport`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `L'attribution des primes Qualifications Techniques aux techniciens de maintenance repose sur des règles métier complexes. La consolidation manuelle de ces critères issus de systèmes différents (SAP/BI4, StationLog) était source d'erreurs et de délais.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Développement d'un rapport Power BI consolidant les données issues de SAP/BI4 et StationLog pour appliquer automatiquement les règles d'éligibilité aux primes. Traitement conforme RGPD des données personnelles sensibles. Le rapport est présenté lors des comités RH avec filtres par direction et par période.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `3 critères d'éligibilité`,
+    "m2l": `Données personnelles — RGPD`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `QT Bonus Attribution<br><span style='font-style:italic;color:var(--orange)'>& HR Tracking</span>`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Management of Technical Qualification bonus attribution: multi-criteria business rules (number of interventions over two semesters, qualification validity, certified English level). Rigorous handling of personal data in compliance with GDPR.`,
+    "label-demo": `Report overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `Attribution of Technical Qualification bonuses to maintenance technicians relies on complex business rules. Manual consolidation of criteria from different systems (SAP/BI4, StationLog) was error-prone and time-consuming.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `Power BI report consolidating data from SAP/BI4 and StationLog to automatically apply bonus eligibility rules. GDPR-compliant handling of sensitive personal data. The report is presented in HR committees with filters by department and period.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `3 eligibility criteria`,
+    "m2l": `Personal data — GDPR`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

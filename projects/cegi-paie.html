@@ -84,6 +84,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -101,7 +107,12 @@ footer { background: var(--text); padding: 22px 44px; }
       <span class="lang-sep">|</span>
       <button class="lang-btn" data-lang="en">EN</button>
     </div>
-      <span class="nav-logo">Branly DJIME</span>
+      <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <span class="nav-logo">Branly DJIME</span>
     </div>
   </div>
 </nav>
@@ -109,11 +120,11 @@ footer { background: var(--text); padding: 22px 44px; }
 <header class="proj-header">
   <div class="proj-badge" data-i18n="badge">Data Scientist</div>
   <div class="proj-title" data-i18n="proj-title">CEGI — Vérificateur de<br>Fiches de Paie</div>
-  <div class="proj-ctx">Projet académique · ESILV · LLM & GenAI · 2025</div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Projet académique · ESILV · LLM & GenAI · 2025</div>
   <div class="proj-summary" data-i18n="summary">Application web fullstack d'analyse automatique de bulletins de salaire et de calcul d'indemnités. L'outil vérifie les cotisations réglementaires (RGDU, CSG, bases T1/T2, allocations familiales…) et calcule les indemnités de licenciement ou de rupture conventionnelle, avec support de la CCN 1966.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">7 checks</div><div class="metric-l">Vérifications réglementaires / Regulatory</div></div>
-    <div><div class="metric-n">CCN 1966</div><div class="metric-l">Convention collective / Collective agreement</div></div>
+    <div><div class="metric-n">7 checks</div><div class="metric-l" data-i18n="m1l">Vérifications réglementaires / Regulatory</div></div>
+    <div><div class="metric-n">CCN 1966</div><div class="metric-l" data-i18n="m2l">Convention collective / Collective agreement</div></div>
   </div>
 </header>
 
@@ -201,7 +212,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info" data-i18n="footer-info">branly.djime@gmail.com · 2026</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -268,6 +279,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Scientist`,
+    "proj-title": `CEGI<br><span style='font-style:italic;color:var(--orange)'>Vérificateur de Fiches de Paie</span>`,
+    "proj-ctx": `Projet académique · ESILV · LLM & GenAI · 2025`,
+    "proj-summary": `Application web fullstack d'analyse automatique de bulletins de salaire et de calcul d'indemnités. L'outil vérifie les cotisations réglementaires (RGDU, CSG, bases T1/T2…) et calcule les indemnités de licenciement ou de rupture conventionnelle, avec support de la CCN 1966.`,
+    "label-demo": `Aperçu de l'application`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `La vérification manuelle des bulletins de salaire est fastidieuse et source d'erreurs. Les règles de calcul des cotisations et des indemnités de rupture sont complexes et évoluent régulièrement. Ce projet vise à automatiser ces vérifications en combinant extraction PDF et LLM.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Architecture fullstack : API FastAPI (Python) + interface React/TypeScript servie par Nginx, orchestrées via Docker Compose. Extraction des données de fiches de paie PDF via PyMuPDF/pdfplumber, analyse LLM avec Google Gemini. 7 vérifications réglementaires automatiques. Calcul d'indemnités : salaire de référence max(moyenne 12 mois, moyenne 3 mois), application du principe de faveur, support inaptitude professionnelle (×2).`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `Vérifications réglementaires`,
+    "m2l": `CCN 1966 supportée`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Scientist`,
+    "proj-title": `CEGI<br><span style='font-style:italic;color:var(--orange)'>Payroll Verification Tool</span>`,
+    "proj-ctx": `Academic project · ESILV · LLM & GenAI · 2025`,
+    "proj-summary": `Full-stack web application for automated payslip analysis and redundancy indemnity calculation. The tool verifies regulatory contributions (RGDU, CSG, T1/T2 bases…) and calculates dismissal or mutual termination indemnities, with CCN 1966 support.`,
+    "label-demo": `Application overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `Manual payslip verification is tedious and error-prone. Contribution and termination indemnity calculation rules are complex and regularly updated. This project aims to automate these checks by combining PDF extraction and LLM.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `Full-stack architecture: FastAPI (Python) API + React/TypeScript interface served by Nginx, orchestrated via Docker Compose. Payslip data extraction from PDF via PyMuPDF/pdfplumber, LLM analysis with Google Gemini. 7 automatic regulatory checks. Indemnity calculation: reference salary max(12-month average, 3-month average), most-favourable principle, professional incapacity support (×2).`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `Regulatory checks`,
+    "m2l": `CCN 1966 supported`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

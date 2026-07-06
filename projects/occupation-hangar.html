@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,27 +93,32 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Analyst</div>
-  <div class="proj-title">Taux d'Occupation &<br>Activité Hangar</div>
-  <div class="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
-  <div class="proj-summary">Suivi de l'occupation des baies hangar et calcul du taux d'activité : est-ce qu'il y a eu des tâches réalisées pendant que l'avion était sur la baie ? Les données de tractage partiellement saisies manuellement sont standardisées via Power Query puis croisées avec les tâches réalisées exportées depuis SAP/BI4.</div>
+  <div class="proj-badge" data-i18n="badge">Data Analyst</div>
+  <div class="proj-title" data-i18n="proj-title">Taux d'Occupation &<br>Activité Hangar</div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
+  <div class="proj-summary" data-i18n="proj-summary">Suivi de l'occupation des baies hangar et calcul du taux d'activité : est-ce qu'il y a eu des tâches réalisées pendant que l'avion était sur la baie ? Les données de tractage partiellement saisies manuellement sont standardisées via Power Query puis croisées avec les tâches réalisées exportées depuis SAP/BI4.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">3 KPIs</div><div class="metric-l">Occupation + Activité + Remplissage</div></div>
-    <div><div class="metric-n">Multi-sources</div><div class="metric-l">Tractage · SAP/BI4</div></div>
+    <div><div class="metric-n">3 KPIs</div><div class="metric-l" data-i18n="m1l">Occupation + Activité + Remplissage</div></div>
+    <div><div class="metric-n">Multi-sources</div><div class="metric-l" data-i18n="m2l">Tractage · SAP/BI4</div></div>
   </div>
 </header>
 
 <div class="proj-content">
 
   <div class="proj-demo">
-    <div class="block-label">Aperçu du rapport</div>
+    <div class="block-label" data-i18n="label-demo">Aperçu du rapport</div>
     <div class="demo-media" data-lightbox>
       <img src="../assets/images/projects/occupation-hangar/demo.gif" alt="Démo">
       <!--
@@ -125,17 +136,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>Trois indicateurs distincts pilotent la performance des hangars : le taux d'occupation des baies (l'avion est-il physiquement présent ?), le taux d'activité (des tâches ont-elles été effectuées pendant ce temps ?) et le taux de remplissage des hangars (pourcentages de baies occupées, photos prisent plusieurs fois dans la journée). Ces trois dimensions étaient difficiles à réconcilier car elles provenaient de sources hétérogènes avec des formats incompatibles.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>Trois indicateurs distincts pilotent la performance des hangars : le taux d'occupation des baies (l'avion est-il physiquement présent ?), le taux d'activité (des tâches ont-elles été effectuées pendant ce temps ?) et le taux de remplissage des hangars (pourcentages de baies occupées, photos prisent plusieurs fois dans la journée). Ces trois dimensions étaient difficiles à réconcilier car elles provenaient de sources hétérogènes avec des formats incompatibles.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Solution développée</div>
-    <div class="proj-desc-text"><p>Standardisation des données de tractage partiellement saisies manuellement via Power Query (nettoyage, normalisation des formats, déduplication). Croisement avec les exports de tâches SAP/BI4 pour calculer les deux taux. Le dashboard résultant permet aux chefs de voir en un coup d'œil les baies sous-utilisées et d'optimiser l'affectation des ressources.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Solution développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Standardisation des données de tractage partiellement saisies manuellement via Power Query (nettoyage, normalisation des formats, déduplication). Croisement avec les exports de tâches SAP/BI4 pour calculer les deux taux. Le dashboard résultant permet aux chefs de voir en un coup d'œil les baies sous-utilisées et d'optimiser l'affectation des ressources.</p></div>
   </div>
 
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/occupation-hangar/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -157,7 +168,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Power BI</span>
       <span class="tool-tag">Power Query</span>
@@ -171,10 +182,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="empreinte-maintenance.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="deformation-programme.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -184,7 +195,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2026</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -213,6 +224,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Taux d'Occupation &<br>Activité Hangar`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Suivi de l'occupation des baies hangar et calcul du taux d'activité : est-ce qu'il y a eu des tâches réalisées pendant que l'avion était sur la baie ? Les données de tractage partiellement manuelles sont standardisées via Power Query puis croisées avec les tâches SAP/BI4.`,
+    "label-demo": `Aperçu du rapport`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `Trois indicateurs pilotent la performance des hangars : le taux d'occupation des baies (l'avion est-il physiquement présent ?), le taux d'activité (des tâches ont-elles été effectuées ?) et le taux de remplissage des hangars. Ces dimensions étaient difficiles à réconcilier car elles provenaient de sources hétérogènes avec des formats incompatibles.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Standardisation des données de tractage partiellement manuelles via Power Query (nettoyage, normalisation, déduplication). Croisement avec les exports de tâches SAP/BI4 pour calculer les taux. Le dashboard permet aux chefs de voir les baies sous-utilisées et d'optimiser l'affectation des ressources.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `Occupation + Activité + Remplissage`,
+    "m2l": `Tractage · SAP/BI4`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Hangar Occupancy &<br>Activity Rate`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Hangar bay occupancy tracking and activity rate calculation: were tasks actually performed while the aircraft was on the bay? Partially manual tracking data is standardised via Power Query and cross-referenced with SAP/BI4 task exports.`,
+    "label-demo": `Report overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `Three KPIs drive hangar performance: bay occupancy rate (is the aircraft physically present?), activity rate (were tasks performed?) and hangar fill rate. These dimensions were hard to reconcile as they came from heterogeneous sources with incompatible formats.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `Standardisation of partially manual tracking data via Power Query (cleaning, normalisation, deduplication). Cross-referencing with SAP/BI4 task exports to compute the rates. The dashboard enables team leaders to identify underutilised bays and optimise resource allocation.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `Occupancy + Activity + Fill rate`,
+    "m2l": `Tracking · SAP/BI4`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,27 +93,32 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Analyst</div>
-  <div class="proj-title">Suivi des Eaux Embarquées<br><span style='font-style:italic;color:var(--orange)'>HSE</span></div>
-  <div class="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
-  <div class="proj-summary">Dashboard de conformité des analyses d'eau à bord pour le service Hygiène Sécurité Environnement : taux de conformité par catégorie, par flotte et comparaison pluriannuelle pour le REX en COPIL. Alerte automatisée chaque lundi via Power BI Dashboard Subscription.</div>
+  <div class="proj-badge" data-i18n="badge">Data Analyst</div>
+  <div class="proj-title" data-i18n="proj-title">Suivi des Eaux Embarquées<br><span style='font-style:italic;color:var(--orange)'>HSE</span></div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Air France Industries · DEA Data Office · 2024–2025</div>
+  <div class="proj-summary" data-i18n="proj-summary">Dashboard de conformité des analyses d'eau à bord pour le service Hygiène Sécurité Environnement : taux de conformité par catégorie, par flotte et comparaison pluriannuelle pour le REX en COPIL. Alerte automatisée chaque lundi via Power BI Dashboard Subscription.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">Lundi 9h</div><div class="metric-l">Alerte hebdomadaire auto</div></div>
-    <div><div class="metric-n">Multi-flottes</div><div class="metric-l">Par catégorie · pluriannuel</div></div>
+    <div><div class="metric-n">Lundi 9h</div><div class="metric-l" data-i18n="m1l">Alerte hebdomadaire auto</div></div>
+    <div><div class="metric-n">Multi-flottes</div><div class="metric-l" data-i18n="m2l">Par catégorie · pluriannuel</div></div>
   </div>
 </header>
 
 <div class="proj-content">
 
   <div class="proj-demo">
-    <div class="block-label">Aperçu du rapport</div>
+    <div class="block-label" data-i18n="label-demo">Aperçu du rapport</div>
     <div class="demo-media" data-lightbox>
       <img src="../assets/images/projects/eaux-embarquees/demo.gif" alt="Démo">
       <!--
@@ -125,19 +136,19 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Problématique</div>
-    <div class="proj-desc-text"><p>Le service HSE d'Air France mandate un prestataire externe pour effectuer des prélèvements et analyses d'eau à bord des avions. Le suivi de la conformité de ces analyses était réalisé manuellement, sans vue consolidée par flotte ni comparaison historique. Les réunions COPIL manquaient d'un support de REX structuré.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Problématique</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>Le service HSE d'Air France mandate un prestataire externe pour effectuer des prélèvements et analyses d'eau à bord des avions. Le suivi de la conformité de ces analyses était réalisé manuellement, sans vue consolidée par flotte ni comparaison historique. Les réunions COPIL manquaient d'un support de REX structuré.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Solution développée</div>
-    <div class="proj-desc-text"><p>Construction d'un dashboard Power BI connecté aux données SharePoint du service HSE. Calcul des taux de conformité par catégorie d'eau (potable, technique…) et par flotte, avec visualisation de l'évolution pluriannuelle. Mise en place d'une alerte Power BI Dashboard Subscription envoyée automatiquement chaque lundi matin avec le nombre d'analyses effectuées dans le mois en cours.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Solution développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Construction d'un dashboard Power BI connecté aux données SharePoint du service HSE. Calcul des taux de conformité par catégorie d'eau (potable, technique…) et par flotte, avec visualisation de l'évolution pluriannuelle. Mise en place d'une alerte Power BI Dashboard Subscription envoyée automatiquement chaque lundi matin avec le nombre d'analyses effectuées dans le mois en cours.</p></div>
   </div>
 <!--
 
 
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/eaux-embarquees/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -159,7 +170,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Power BI</span>
       <span class="tool-tag">DAX</span>
@@ -171,10 +182,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="deformation-programme.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="starlink-cabine.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -184,7 +195,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -213,6 +224,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Suivi des Eaux Embarquées<br><span style='font-style:italic;color:var(--orange)'>HSE</span>`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Dashboard de conformité des analyses d'eau à bord pour le service HSE : taux de conformité par catégorie, par flotte et comparaison pluriannuelle pour le REX en COPIL. Alerte automatisée chaque lundi via Power BI Dashboard Subscription.`,
+    "label-demo": `Aperçu du rapport`,
+    "ctx1-title": `Contexte & Problématique`,
+    "p1": `Le service HSE d'Air France mandate un prestataire externe pour des prélèvements et analyses d'eau à bord. Le suivi de la conformité était réalisé manuellement, sans vue consolidée par flotte ni comparaison historique. Les réunions COPIL manquaient d'un support de REX structuré.`,
+    "ctx2-title": `Solution développée`,
+    "p2": `Construction d'un dashboard Power BI connecté aux données SharePoint du service HSE. Calcul des taux de conformité par catégorie d'eau et par flotte, avec visualisation de l'évolution pluriannuelle. Alerte Power BI Dashboard Subscription envoyée automatiquement chaque lundi matin.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `Alerte hebdomadaire auto`,
+    "m2l": `Par catégorie · pluriannuel`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Analyst`,
+    "proj-title": `Onboard Water Monitoring<br><span style='font-style:italic;color:var(--orange)'>HSE</span>`,
+    "proj-ctx": `Air France Industries · DEA Data Office · 2024–2025`,
+    "proj-summary": `Water analysis compliance dashboard for the HSE department: compliance rate by category, by fleet, and multi-year comparison for COPIL review meetings. Automated alert every Monday via Power BI Dashboard Subscription.`,
+    "label-demo": `Report overview`,
+    "ctx1-title": `Context & Problem`,
+    "p1": `Air France's HSE department commissions an external provider for onboard water sampling and analysis. Compliance tracking was done manually, with no consolidated fleet view or historical comparison. COPIL meetings lacked a structured feedback support.`,
+    "ctx2-title": `Solution developed`,
+    "p2": `Power BI dashboard connected to HSE SharePoint data. Compliance rate calculation by water category and fleet, with multi-year trend visualisation. Automated Power BI Dashboard Subscription alert sent every Monday morning.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `Automated weekly alert`,
+    "m2l": `By category · multi-year`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>

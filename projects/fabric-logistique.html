@@ -78,6 +78,12 @@ footer { background: var(--text); padding: 22px 44px; }
   footer { padding: 18px; }
   .footer-inner { flex-direction: column; gap: 6px; text-align: center; }
 }
+
+.lang-toggle { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: none; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; padding: 4px 6px; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.lang-btn.active { color: var(--text); background: var(--cream2); }
+.lang-btn:hover { color: var(--text); }
+.lang-sep { font-size: 11px; color: var(--border2); }
 </style>
 </head>
 <body>
@@ -87,20 +93,25 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="nav-inner">
     <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Retour au portfolio
+      <span data-i18n="nav-back">Retour au portfolio</span>
     </a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <span class="nav-logo">Branly DJIME</span>
   </div>
 </nav>
 
 <header class="proj-header">
-  <div class="proj-badge">Data Engineer</div>
-  <div class="proj-title">Modern Data Platform<br><span style='font-style:italic;color:var(--orange)'>Logistique & Pricing</span></div>
-  <div class="proj-ctx">Projet personnel · Microsoft Fabric · 2025</div>
-  <div class="proj-summary">Architecture ELT end-to-end sur Microsoft Fabric : ingestion multi-sources dans OneLake (API REST via Notebook PySpark, SQL Server via Data Pipeline, SharePoint via Dataflow Gen2), orchestration via pipeline maître. Transformations dbt (Staging → Marts Kimball) déployées sur Fabric SQL Endpoint. Restitution Power BI en Direct Lake.</div>
+  <div class="proj-badge" data-i18n="badge">Data Engineer</div>
+  <div class="proj-title" data-i18n="proj-title">Modern Data Platform<br><span style='font-style:italic;color:var(--orange)'>Logistique & Pricing</span></div>
+  <div class="proj-ctx" data-i18n="proj-ctx">Projet personnel · Microsoft Fabric · 2025</div>
+  <div class="proj-summary" data-i18n="proj-summary">Architecture ELT end-to-end sur Microsoft Fabric : ingestion multi-sources dans OneLake (API REST via Notebook PySpark, SQL Server via Data Pipeline, SharePoint via Dataflow Gen2), orchestration via pipeline maître. Transformations dbt (Staging → Marts Kimball) déployées sur Fabric SQL Endpoint. Restitution Power BI en Direct Lake.</div>
   <div class="proj-metrics">
-    <div><div class="metric-n">3 sources</div><div class="metric-l">API · SQL Server · SharePoint</div></div>
-    <div><div class="metric-n">Direct Lake</div><div class="metric-l">Zéro latence de refresh</div></div>
+    <div><div class="metric-n">3 sources</div><div class="metric-l" data-i18n="m1l">API · SQL Server · SharePoint</div></div>
+    <div><div class="metric-n">Direct Lake</div><div class="metric-l" data-i18n="m2l">Zéro latence de refresh</div></div>
   </div>
 </header>
 
@@ -123,17 +134,17 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-desc-section">
-    <div class="block-label">Contexte & Objectif</div>
-    <div class="proj-desc-text"><p>Projet personnel visant à maîtriser l'écosystème Microsoft Fabric de bout en bout sur un cas concret d'optimisation logistique et de pricing pour l'import/export de marchandises. L'objectif était de construire une architecture data moderne complète, de l'ingestion brute jusqu'aux KPIs décisionnels.</p></div>
+    <div class="block-label" data-i18n="ctx1-title">Contexte & Objectif</div>
+    <div class="proj-desc-text" data-i18n="p1"><p>Projet personnel visant à maîtriser l'écosystème Microsoft Fabric de bout en bout sur un cas concret d'optimisation logistique et de pricing pour l'import/export de marchandises. L'objectif était de construire une architecture data moderne complète, de l'ingestion brute jusqu'aux KPIs décisionnels.</p></div>
   </div>
 
   <div class="proj-desc-section">
-    <div class="block-label">Architecture développée</div>
-    <div class="proj-desc-text"><p>Pipeline d'ingestion hybride centralisant trois sources hétérogènes dans OneLake : catalogue fournisseurs via API REST (Notebook PySpark), historique des ventes via SQL Server (Data Pipeline), coûts de fret ajustés via SharePoint (Dataflow Gen2). Un pipeline maître orchestre les actualisations. Couche dbt : Staging (nettoyage, dédoublonnage, standardisation) → Marts (modèle en étoile Kimball, CTEs) déployées sur Fabric SQL Endpoint. Dashboard Power BI connecté en Direct Lake pour une mise à jour instantanée sans import.</p></div>
+    <div class="block-label" data-i18n="ctx2-title">Architecture développée</div>
+    <div class="proj-desc-text" data-i18n="p2"><p>Pipeline d'ingestion hybride centralisant trois sources hétérogènes dans OneLake : catalogue fournisseurs via API REST (Notebook PySpark), historique des ventes via SQL Server (Data Pipeline), coûts de fret ajustés via SharePoint (Dataflow Gen2). Un pipeline maître orchestre les actualisations. Couche dbt : Staging (nettoyage, dédoublonnage, standardisation) → Marts (modèle en étoile Kimball, CTEs) déployées sur Fabric SQL Endpoint. Dashboard Power BI connecté en Direct Lake pour une mise à jour instantanée sans import.</p></div>
   </div>
 <!--
   <div class="proj-gallery">
-    <div class="block-label">Captures — cliquer pour agrandir</div>
+    <div class="block-label" data-i18n="label-captures">Captures — cliquer pour agrandir</div>
     <div class="gallery-grid">
       <div class="gallery-item" data-lightbox>
         <img src="../assets/images/projects/fabric-logistique/img-1.png" alt="Vue 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -155,7 +166,7 @@ footer { background: var(--text); padding: 22px 44px; }
   </div>
 -->
   <div class="proj-tools-section">
-    <div class="block-label">Stack technique</div>
+    <div class="block-label" data-i18n="label-stack">Stack technique</div>
     <div class="tools-grid">
       <span class="tool-tag">Microsoft Fabric</span>
       <span class="tool-tag">OneLake</span>
@@ -172,10 +183,10 @@ footer { background: var(--text); padding: 22px 44px; }
   <div class="proj-nav-bottom">
     <a class="nav-btn" href="primes-qt.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Projet précédent
+      <span data-i18n="nav-prev">Projet précédent</span>
     </a>
     <a class="nav-btn" href="bal-spark.html">
-      Projet suivant
+      <span data-i18n="nav-next">Projet suivant</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -185,7 +196,7 @@ footer { background: var(--text); padding: 22px 44px; }
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Branly DJIME</span>
-    <span class="footer-info">branly.djime@gmail.com · 2025</span>
+    <span class="footer-info" data-i18n="footer">branly.djime@gmail.com · 2026</span>
   </div>
 </footer>
 </div>
@@ -214,6 +225,50 @@ document.querySelectorAll('[data-lightbox] img').forEach(img => {
 lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+</script>
+<script src="../assets/js/i18n.js"></script>
+<script>
+const translations = {
+  fr: {
+    "nav-back": `Retour au portfolio`,
+    "badge": `Data Engineer`,
+    "proj-title": `Modern Data Platform<br><span style='font-style:italic;color:var(--orange)'>Logistique & Pricing</span>`,
+    "proj-ctx": `Projet personnel · Microsoft Fabric · 2025`,
+    "proj-summary": `Architecture ELT end-to-end sur Microsoft Fabric : ingestion multi-sources dans OneLake (API REST via Notebook PySpark, SQL Server via Data Pipeline, SharePoint via Dataflow Gen2), orchestration via pipeline maître, transformations dbt (Staging → Marts Kimball), restitution Power BI en Direct Lake.`,
+    "label-demo": `Aperçu du projet`,
+    "ctx1-title": `Contexte & Objectif`,
+    "p1": `Projet personnel visant à maîtriser l'écosystème Microsoft Fabric de bout en bout sur un cas concret d'optimisation logistique et de pricing pour l'import/export de marchandises. L'objectif était de construire une architecture data moderne complète, de l'ingestion brute jusqu'aux KPIs décisionnels.`,
+    "ctx2-title": `Architecture développée`,
+    "p2": `Pipeline d'ingestion hybride centralisant trois sources hétérogènes dans OneLake. Couche dbt : Staging (nettoyage, dédoublonnage, standardisation) → Marts (modèle en étoile Kimball, CTEs) déployées sur Fabric SQL Endpoint. Dashboard Power BI connecté en Direct Lake pour une mise à jour instantanée sans import.`,
+    "label-captures": `Captures — cliquer pour agrandir`,
+    "label-stack": `Stack technique`,
+    "m1l": `API · SQL Server · SharePoint`,
+    "m2l": `Zéro latence de refresh`,
+    "nav-prev": `Projet précédent`,
+    "nav-next": `Projet suivant`,
+    "footer": `branly.djime@gmail.com · 2026`
+  },
+  en: {
+    "nav-back": `Back to portfolio`,
+    "badge": `Data Engineer`,
+    "proj-title": `Modern Data Platform<br><span style='font-style:italic;color:var(--orange)'>Logistics & Pricing</span>`,
+    "proj-ctx": `Personal project · Microsoft Fabric · 2025`,
+    "proj-summary": `End-to-end ELT architecture on Microsoft Fabric: multi-source ingestion into OneLake (REST API via PySpark Notebook, SQL Server via Data Pipeline, SharePoint via Dataflow Gen2), master pipeline orchestration, dbt transformations (Staging → Kimball Marts), Power BI Direct Lake reporting.`,
+    "label-demo": `Project overview`,
+    "ctx1-title": `Context & Objective`,
+    "p1": `Personal project aimed at mastering the Microsoft Fabric ecosystem end-to-end on a real-world logistics and pricing optimisation use case. The goal was to build a complete modern data architecture, from raw ingestion to decision-making KPIs.`,
+    "ctx2-title": `Architecture built`,
+    "p2": `Hybrid ingestion pipeline centralising three heterogeneous sources into OneLake. dbt layer: Staging (cleaning, deduplication, standardisation) → Marts (Kimball star schema, CTEs) deployed on Fabric SQL Endpoint. Power BI dashboard connected in Direct Lake for instant updates without import.`,
+    "label-captures": `Screenshots — click to enlarge`,
+    "label-stack": `Tech stack`,
+    "m1l": `API · SQL Server · SharePoint`,
+    "m2l": `Zero refresh latency`,
+    "nav-prev": `Previous project`,
+    "nav-next": `Next project`,
+    "footer": `branly.djime@gmail.com · 2026`
+  }
+};
+initI18n(translations);
 </script>
 </body>
 </html>
